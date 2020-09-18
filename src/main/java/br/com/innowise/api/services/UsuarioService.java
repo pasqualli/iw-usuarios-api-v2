@@ -37,4 +37,10 @@ public class UsuarioService {
 				.orElseThrow(() -> new ObjectNotFoundException("Object not fount -> " + id));
 		return new UsuarioDTO(usuario);
 	}
+	
+	public void delete(String id) {
+		Usuario usuario = usuarioRepository.findById(id)
+				.orElseThrow(() -> new ObjectNotFoundException("Object not fount -> " + id));
+		usuarioRepository.delete(usuario);
+	}
 }

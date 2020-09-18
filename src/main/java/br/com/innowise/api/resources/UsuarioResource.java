@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +35,12 @@ public class UsuarioResource {
 	public ResponseEntity<UsuarioDTO>show(@RequestParam(name = "id") String id){
 		UsuarioDTO usuarioDTO = service.show(id);
 		return ResponseEntity.ok(usuarioDTO);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<UsuarioDTO>delete(@RequestParam(name = "id") String id){
+		service.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 	
 	@GetMapping
